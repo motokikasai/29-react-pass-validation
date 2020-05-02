@@ -11,7 +11,7 @@
 }
 
 .container {
-  min-width: 300px;
+  width: 500px;
 }
 
 form {
@@ -24,7 +24,7 @@ input {
   padding: 8px;
 }
 
-input[name="password"] {
+input[name="inputPassword"] {
   margin-bottom: 0;
 }
 
@@ -58,7 +58,8 @@ button:hover {
 }
 
 .username-display {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-style: italic;
   color: purple;
   font-weight: bold;
 }

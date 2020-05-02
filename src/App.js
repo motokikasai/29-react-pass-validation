@@ -20,31 +20,28 @@ class App extends React.Component {
       errContainsUsername: "",
     };
 
-    this.usernameHandler = this.usernameHandler.bind(this);
-    this.passwordValidator = this.passwordValidator.bind(this);
+    this.inputHandler = this.inputHandler.bind(this);
     this.ClickHandler = this.ClickHandler.bind(this);
   }
 
   submitHandler(e) {
     e.preventDefault();
-    e.target.reset();
+    // e.target.reset();
   }
 
-  usernameHandler(e) {
+  inputHandler(e) {
     this.setState({
-      inputUsername: e.target.value,
+      [e.target.name]: e.target.value,
       errNoUsername: "",
       errNoAtSign: "",
+      errNoPassword: "",
+      errNoCapLetter: "",
+      errNoSpecChar: "",
+      errNoNum: "",
+      errNoEightChars: "",
+      errContainsUsername: "",
     });
   }
-
-  passwordValidator(e) {
-    this.setState({
-      inputPassword: e.target.value,
-    });
-  }
-
-  // clearInput()
 
   ClickHandler() {
     switch (true) {
@@ -60,6 +57,42 @@ class App extends React.Component {
         });
         break;
 
+      case !this.state.inputPassword:
+        this.setState({
+          errNoPassword: "Password required",
+        });
+        break;
+
+      case !this.state.inputPassword.match(/(?=.*?[A-Z])/):
+        this.setState({
+          errNoCapLetter: "Password must contain at least 1 capital letter",
+        });
+        break;
+
+      case !this.state.inputPassword.match(/(?=.*?[#?!@$%^&*-])/):
+        this.setState({
+          errNoSpecChar: "Password must contain at least 1 special character",
+        });
+        break;
+
+      case !this.state.inputPassword.match(/(?=.*?[0-9])/):
+        this.setState({
+          errNoNum: "Password must contain at least 1 number",
+        });
+        break;
+
+      case !this.state.inputPassword.match(/^(.{8})$/):
+        this.setState({
+          errNoEightChars: "Password must 8 characters long",
+        });
+        break;
+
+      case this.state.inputPassword === this.state.nameForDisplay:
+        this.setState({
+          errContainsUsername: "Password cannot contain the username",
+        });
+        break;
+      // Take username from the email address BEFORE "@"
       case this.state.inputUsername.includes("@"):
         this.setState({
           nameForDisplay: this.state.inputUsername.slice(
@@ -67,30 +100,13 @@ class App extends React.Component {
             this.state.inputUsername.indexOf("@")
           ),
         });
-        break;
-
+      // eslint-disable-next-line
       default:
+        this.setState({
+          success: true,
+        });
         break;
     }
-
-    // if (!this.state.inputUsername) {
-    //   this.setState({
-    //     errNoUsername: "Username required",
-    //   });
-    // } else if (!this.state.inputUsername.includes("@")) {
-    //   this.setState({
-    //     errNoAtSign: "Username must include '@'",
-    //   });
-    // }
-
-    // if (this.state.inputUsername.includes("@")) {
-    //   this.setState({
-    //     nameForDisplay: this.state.inputUsername.slice(
-    //       0,
-    //       this.state.inputUsername.indexOf("@")
-    //     ),
-    //   });
-    // }
   }
 
   render() {
@@ -103,16 +119,16 @@ class App extends React.Component {
               <form onSubmit={this.submitHandler} className="input-fields">
                 <label htmlFor="username">Username</label>
                 <input
-                  onChange={this.usernameHandler}
+                  onChange={this.inputHandler}
                   type="text"
-                  name="username"
+                  name="inputUsername"
                   id="username"
                 />
                 <label htmlFor="password">Password</label>
                 <input
-                  onChange={this.passwordValidator}
+                  onChange={this.inputHandler}
                   type="text"
-                  name="password"
+                  name="inputPassword"
                   id="password"
                 />
                 <p>
@@ -138,10 +154,13 @@ class App extends React.Component {
               <span className="username-display">
                 {this.state.nameForDisplay}
               </span>
-              ! You made it!!
             </h1>
-            <h3>Welcome to the club</h3>
-            <p>Enjoy your stay</p>
+            <h3>
+              Welcome to the club{" "}
+              <span role="img" aria-label="dancer">
+                💃
+              </span>
+            </h3>
           </div>
         )}
       </div>
