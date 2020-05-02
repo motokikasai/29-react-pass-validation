@@ -7,7 +7,29 @@ class App extends React.Component {
 
     this.state = {
       success: false,
+      inputUsername: "",
+      inputPassword: "",
     };
+
+    this.usernameValidator = this.usernameValidator.bind(this);
+    this.passwordValidator = this.passwordValidator.bind(this);
+  }
+
+  submitHandler(e) {
+    e.preventDefault();
+    e.target.reset();
+  }
+
+  usernameValidator(e) {
+    this.setState({
+      inputUsername: e.target.value,
+    });
+  }
+
+  passwordValidator(e) {
+    this.setState({
+      inputPassword: e.target.value,
+    });
   }
 
   render() {
@@ -17,12 +39,24 @@ class App extends React.Component {
           <div className="main">
             <div className="container">
               <h3>Sign up</h3>
-              <form className="input-fields">
+              <form onSubmit={this.submitHandler} className="input-fields">
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" id="username" />
+                <input
+                  onChange={this.usernameValidator}
+                  type="text"
+                  name="username"
+                  id="username"
+                />
                 <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password" />
-                <p>ERROR MSG</p>
+                <input
+                  onChange={this.passwordValidator}
+                  type="text"
+                  name="password"
+                  id="password"
+                />
+                <p>
+                  <span className="err">Error message here...</span>
+                </p>
                 <button>Sign up</button>
               </form>
             </div>

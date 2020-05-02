@@ -24,6 +24,14 @@ input {
   padding: 8px;
 }
 
+input[name="password"] {
+  margin-bottom: 0;
+}
+
+.err {
+  color: rgb(196, 0, 121);
+}
+
 button {
   background: rgb(69, 143, 255);
   border-style: none;
