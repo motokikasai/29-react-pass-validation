@@ -1,10 +1,13 @@
 .App {
+  font-size: 1.3rem;
+}
+
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: #efeeee;
-  font-size: 1.3rem;
 }
 
 .container {
@@ -34,4 +37,14 @@ button {
 
 button:hover {
   background: rgb(27, 124, 180);
+}
+
+.congrats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  background: hotpink;
 }
