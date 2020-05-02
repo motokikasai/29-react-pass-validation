@@ -127,7 +127,7 @@ class App extends React.Component {
                 <label htmlFor="password">Password</label>
                 <input
                   onChange={this.inputHandler}
-                  type="text"
+                  type="password"
                   name="inputPassword"
                   id="password"
                 />
