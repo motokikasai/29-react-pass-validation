@@ -56,3 +56,9 @@ button:hover {
   color: white;
   background: hotpink;
 }
+
+.username-display {
+  font-size: 2rem;
+  color: purple;
+  font-weight: bold;
+}
