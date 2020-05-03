@@ -17,6 +17,7 @@
 form {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 input {
@@ -54,7 +55,8 @@ button:hover {
   align-items: center;
   height: 100vh;
   color: white;
-  background: hotpink;
+  background: url("./bg-sand-beach-sun.jpg");
+  background-size: cover;
 }
 
 .username-display {
@@ -62,4 +64,12 @@ button:hover {
   font-style: italic;
   color: purple;
   font-weight: bold;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 120px;
+  width: 40px;
+  opacity: 0.6;
 }

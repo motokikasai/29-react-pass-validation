@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import eyeIcon from "./eye-icon.png";
 
 class App extends React.Component {
   constructor(props) {
@@ -131,6 +132,7 @@ class App extends React.Component {
                   name="inputPassword"
                   id="password"
                 />
+                <img src={eyeIcon} alt="eye-icon" className="eye-icon" />
                 <p>
                   <span className="err">
                     {this.state.errNoUsername}
