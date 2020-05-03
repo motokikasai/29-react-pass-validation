@@ -11,6 +11,7 @@ class App extends React.Component {
       nameForDisplay: "",
       inputUsername: "",
       inputPassword: "",
+      reveal: false,
       errNoUsername: "",
       errNoAtSign: "",
       errNoPassword: "",
@@ -23,6 +24,7 @@ class App extends React.Component {
 
     this.inputHandler = this.inputHandler.bind(this);
     this.ClickHandler = this.ClickHandler.bind(this);
+    this.revealHandler = this.revealHandler.bind(this);
   }
 
   submitHandler(e) {
@@ -110,6 +112,12 @@ class App extends React.Component {
     }
   }
 
+  revealHandler() {
+    this.setState({
+      reveal: !this.state.reveal,
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -128,11 +136,16 @@ class App extends React.Component {
                 <label htmlFor="password">Password</label>
                 <input
                   onChange={this.inputHandler}
-                  type="password"
+                  type={this.state.reveal ? "text" : "password"}
                   name="inputPassword"
                   id="password"
                 />
-                <img src={eyeIcon} alt="eye-icon" className="eye-icon" />
+                <img
+                  onClick={this.revealHandler}
+                  src={eyeIcon}
+                  alt="eye-icon"
+                  className="eye-icon"
+                />
                 <p>
                   <span className="err">
                     {this.state.errNoUsername}

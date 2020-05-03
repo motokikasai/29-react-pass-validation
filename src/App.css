@@ -73,3 +73,7 @@ button:hover {
   width: 40px;
   opacity: 0.6;
 }
+
+.eye-icon:active {
+  opacity: 0.8;
+}
